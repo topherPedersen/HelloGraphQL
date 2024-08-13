@@ -7,11 +7,17 @@ import ErrorPage from "./error-page";
 import Foo from "./routes/foo";
 import Bar from "./routes/bar";
 import SpotifyRedirect from "./routes/spotify-redirect";
-
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+// Apollo GraphQL Client Quick Start Guide: https://www.apollographql.com/docs/react/get-started
+import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
+
+const client = new ApolloClient({
+  uri: 'https://flyby-router-demo.herokuapp.com/',
+  cache: new InMemoryCache(),
+});
 
 const router = createBrowserRouter([
   {
