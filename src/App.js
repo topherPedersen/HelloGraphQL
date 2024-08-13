@@ -4,7 +4,7 @@ import './App.css';
 function App() {
   return (
     <div>
-      <h1>Hello, GraphQL</h1>
+      <h1>KGQL: GraphQL Radio</h1>
     </div>
   );
 }
