@@ -3,14 +3,14 @@ import { client } from '../index';
 import { gql } from '@apollo/client';
 
 // Apollo GraphQL Client Quick Start Guide: https://www.apollographql.com/docs/react/get-started
-// Blog Post on the Spotify GraphQL Server: https://www.codecentric.de/wissens-hub/blog/lets-build-spotify-graphql-server
+// I'm feeling lucky Google search URL format: http://www.google.com/search?q=yourQueryHere&btnI
 
-export default function NetherHour() {
+export default function StevieRayVaughan() {
   useEffect(() => {
     client
       .query({
         query: gql`{
-          queryArtists(byName:"Metallica") { 
+          queryArtists(byName:"Stevie Ray Vaughan") { 
             albums {
               name
               tracks {
@@ -29,7 +29,7 @@ export default function NetherHour() {
 
   return (
     <div>
-      <h1>Nether Hour</h1>
+      <h1>Stevie Ray Vaughan</h1>
     </div>
   );
 }
