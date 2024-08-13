@@ -5,6 +5,7 @@ import './index.css';
 import Root from "./routes/root";
 import reportWebVitals from './reportWebVitals';
 import ErrorPage from "./error-page";
+import Contact from "./routes/contact";
 
 // React Router Quick Start Guide: https://reactrouter.com/en/main/start/tutorial
 
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
     // element: <div>Hello world!</div>,
     element: <Root />,
     errorElement: <ErrorPage />,
+  },
+  {
+    path: "contacts/:contactId",
+    element: <Contact />,
   },
 ]);
 
