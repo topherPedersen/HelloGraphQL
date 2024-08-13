@@ -42,14 +42,13 @@ export default function NetherHour() {
   }, []);
 
   function onClickAlbumOrTrackName(albumOrTrackName) {
-    const searchQuery = encodeURIComponent(`artistName ${albumOrTrackName} YouTube`);
+    const searchQuery = encodeURIComponent(`${artistName} Music Video on YouTube for ${albumOrTrackName}`);
     const imFeelingLuckyURL = `http://www.google.com/search?q=${searchQuery}&btnI`;
     window.location.href = imFeelingLuckyURL;
   }
 
   return (
     <div>
-      <h1>Nether Hour</h1>
       {albumAndTrackNames.map((albumOrTrackName, index) => (
         <p 
           key={index}
