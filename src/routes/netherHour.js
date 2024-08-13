@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { client } from '../index';
 import { gql } from '@apollo/client';
 
@@ -6,11 +6,15 @@ import { gql } from '@apollo/client';
 // Blog Post on the Spotify GraphQL Server: https://www.codecentric.de/wissens-hub/blog/lets-build-spotify-graphql-server
 
 export default function NetherHour() {
-  useEffect(() => {
+  const artistName = 'Nether Hour';
+  const [albumAndTrackNames, setAlbumAndTrackNames] = useState([]);
+
+  function initAlbumsAndTracks() {
     client
       .query({
         query: gql`{
-          queryArtists(byName:"Metallica") { 
+          queryArtists(byName:"Nether Hour") { 
+            name
             albums {
               name
               tracks {
@@ -22,14 +26,39 @@ export default function NetherHour() {
           }`,
       })
       .then((result) => { 
-        alert(JSON.stringify(result, null, 2));
-        console.log(JSON.stringify(result, null, 2));
+        const artists = result.data.queryArtists;
+
+        if (!result.data.queryArtists.length) {
+          return;
+        }
+
+        const firstArtistResult = artists[0]
+        setAlbumAndTrackNames(firstArtistResult.albums.map(albumOrTrack => albumOrTrack.name))
       });
+  }
+
+  useEffect(() => {
+    initAlbumsAndTracks();
   }, []);
+
+  function onClickAlbumOrTrackName(albumOrTrackName) {
+    const searchQuery = encodeURIComponent(`artistName ${albumOrTrackName} YouTube`);
+    const imFeelingLuckyURL = `http://www.google.com/search?q=${searchQuery}&btnI`;
+    window.location.href = imFeelingLuckyURL;
+  }
 
   return (
     <div>
       <h1>Nether Hour</h1>
+      {albumAndTrackNames.map((albumOrTrackName, index) => (
+        <p 
+          key={index}
+          style={{color: 'blue' }}
+          onClick={() => onClickAlbumOrTrackName(albumOrTrackName)}
+        >
+          {albumOrTrackName}
+        </p>
+      ))}
     </div>
   );
 }

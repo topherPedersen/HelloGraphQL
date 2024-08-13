@@ -1,10 +1,12 @@
+import NetherHour from "./netherHour";
+
+
 export default function Root() {
   return (
     <>
       <div>
-        <h1>KGQL: GraphQL Radio</h1>
-        <p><a href={`/netherHour`}>Nether Hour</a></p>
-        <p><a href={`/stevieRayVaughan`}>Stevie Ray Vaughan</a></p>
+        <h1>KGQL: GraphQL Radio feat. Nether Hour</h1>
+        <NetherHour />
       </div>
     </>
   );

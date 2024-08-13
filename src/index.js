@@ -4,7 +4,6 @@ import './index.css';
 import Root from "./routes/root";
 import reportWebVitals from './reportWebVitals';
 import ErrorPage from "./error-page";
-import StevieRayVaughan from "./routes/stevieRayVaughan";
 import NetherHour from "./routes/netherHour";
 import SpotifyRedirect from "./routes/spotify-redirect";
 import {
@@ -24,14 +23,6 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
-  },
-  {
-    path: "stevieRayVaughan",
-    element: <StevieRayVaughan />,
-  },
-  {
-    path: "/netherHour",
-    element: <NetherHour />,
   },
   {
     path: "spotify-redirect",
