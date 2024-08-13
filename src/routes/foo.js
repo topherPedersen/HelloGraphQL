@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { client } from '../index';
 import { gql } from '@apollo/client';
 
+// Apollo GraphQL Client Quick Start Guide: https://www.apollographql.com/docs/react/get-started
+
 export default function Foo() {
   useEffect(() => {
     client
@@ -17,7 +19,7 @@ export default function Foo() {
           }
         `,
       })
-      .then((result) => alert(result));
+      .then((result) => alert(JSON.stringify(result, null, 2)));
   }, []);
 
   return (
