@@ -20,7 +20,8 @@ Clone the Spotify GraphQL Server repo:
 
 For running this example locally, you must 
 [register your own application at spotify](https://developer.spotify.com/documentation/general/guides/authorization/app-settings/).
-Then create an [.env](./.env) file with the generated token, based on the example [.env.example](./.env.example) file.
+
+Then open the .env.example file, and replace the placeholder client id and client secrect with the real client id and secret from Spotify for your newly registered Spotify app. Rename the file from .env.example to .env.
 
 Have a modern `node.js` version ( >=14 ) installed.
 
