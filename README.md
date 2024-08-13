@@ -6,7 +6,9 @@ Simple Example App for learning GraphQL by Chris Pedersen. Essentially a fun hel
 
 ### Step One
 
-Step one here...
+`git clone https://github.com/lowsky/spotify-graphql-server`
+
+`cd spotify-graphql-server`
 
 ### Step Two
 
