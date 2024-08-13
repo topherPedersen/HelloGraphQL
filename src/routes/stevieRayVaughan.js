@@ -6,7 +6,16 @@ import { gql } from '@apollo/client';
 // I'm feeling lucky Google search URL format: http://www.google.com/search?q=yourQueryHere&btnI
 
 export default function StevieRayVaughan() {
-  useEffect(() => {
+  function doStuff() {
+    // {
+    //   "data": {
+    //     "queryArtists": [
+    //       {
+    //         "__typename": "Artist",
+    //         "albums": [
+    //           {
+    //             "__typename": "Album",
+    //             "name": "The Essential Stevie Ray Vaughan And Double Trouble",
     client
       .query({
         query: gql`{
@@ -22,9 +31,13 @@ export default function StevieRayVaughan() {
           }`,
       })
       .then((result) => { 
-        alert(JSON.stringify(result, null, 2));
-        console.log(JSON.stringify(result, null, 2));
+        const firstAlbumOrTrackName = result.data.queryArtists[0].albums[0].name;
+        alert(`firstAlbumOrTrackName: ${firstAlbumOrTrackName}`);
       });
+  }
+
+  useEffect(() => {
+    doStuff();
   }, []);
 
   return (
