@@ -30,7 +30,7 @@ export default function StevieRayVaughan() {
         if (!result.data.queryArtists.length) {
           return;
         }
-        
+
         const firstArtistResult = artists[0]
         setAlbumAndTrackNames(firstArtistResult.albums.map(albumOrTrack => albumOrTrack.name))
       });
@@ -40,11 +40,20 @@ export default function StevieRayVaughan() {
     initAlbumsAndTracks();
   }, []);
 
+  function onClickAlbumOrTrackName(albumOrTrackName) {
+    alert(albumOrTrackName);
+  }
+
   return (
     <div>
       <h1>Stevie Ray Vaughan</h1>
       {albumAndTrackNames.map((albumOrTrackName, index) => (
-        <p key={index}>{albumOrTrackName}</p>
+        <p 
+          key={index}
+          onClick={() => onClickAlbumOrTrackName(albumOrTrackName)}
+        >
+          {albumOrTrackName}
+        </p>
       ))}
     </div>
   );
