@@ -5,7 +5,7 @@ import Root from "./routes/root";
 import reportWebVitals from './reportWebVitals';
 import ErrorPage from "./error-page";
 import Foo from "./routes/foo";
-import Bar from "./routes/bar";
+import NetherHour from "./routes/netherHour";
 import SpotifyRedirect from "./routes/spotify-redirect";
 import {
   createBrowserRouter,
@@ -15,7 +15,6 @@ import {
 import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
 
 export const client = new ApolloClient({
-  // uri: 'https://flyby-router-demo.herokuapp.com/',
   uri: 'http://localhost:4000/graphql',
   cache: new InMemoryCache(),
 });
@@ -31,8 +30,8 @@ const router = createBrowserRouter([
     element: <Foo />,
   },
   {
-    path: "bar",
-    element: <Bar />,
+    path: "/netherHour",
+    element: <NetherHour />,
   },
   {
     path: "spotify-redirect",
