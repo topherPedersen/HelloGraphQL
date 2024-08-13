@@ -6,8 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import ErrorPage from "./error-page";
 import Foo from "./routes/foo";
 import Bar from "./routes/bar";
-
-// React Router Quick Start Guide: https://reactrouter.com/en/main/start/tutorial
+import SpotifyRedirect from "./routes/spotify-redirect";
 
 import {
   createBrowserRouter,
@@ -27,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "bar",
     element: <Bar />,
+  },
+  {
+    path: "spotify-redirect",
+    element: <SpotifyRedirect />,
   },
 ]);
 
