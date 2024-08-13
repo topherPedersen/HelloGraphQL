@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { client } from '../index';
 import { gql } from '@apollo/client';
 
@@ -6,20 +6,14 @@ import { gql } from '@apollo/client';
 // I'm feeling lucky Google search URL format: http://www.google.com/search?q=yourQueryHere&btnI
 
 export default function StevieRayVaughan() {
-  function doStuff() {
-    // {
-    //   "data": {
-    //     "queryArtists": [
-    //       {
-    //         "__typename": "Artist",
-    //         "albums": [
-    //           {
-    //             "__typename": "Album",
-    //             "name": "The Essential Stevie Ray Vaughan And Double Trouble",
+  const [albumAndTrackNames, setAlbumAndTrackNames] = useState([]);
+
+  function initAlbumsAndTracks() {
     client
       .query({
         query: gql`{
           queryArtists(byName:"Stevie Ray Vaughan") { 
+            name
             albums {
               name
               tracks {
@@ -31,18 +25,27 @@ export default function StevieRayVaughan() {
           }`,
       })
       .then((result) => { 
-        const firstAlbumOrTrackName = result.data.queryArtists[0].albums[0].name;
-        alert(`firstAlbumOrTrackName: ${firstAlbumOrTrackName}`);
+        const artists = result.data.queryArtists;
+
+        if (!result.data.queryArtists.length) {
+          return;
+        }
+        
+        const firstArtistResult = artists[0]
+        setAlbumAndTrackNames(firstArtistResult.albums.map(albumOrTrack => albumOrTrack.name))
       });
   }
 
   useEffect(() => {
-    doStuff();
+    initAlbumsAndTracks();
   }, []);
 
   return (
     <div>
       <h1>Stevie Ray Vaughan</h1>
+      {albumAndTrackNames.map((albumOrTrackName, index) => (
+        <p key={index}>{albumOrTrackName}</p>
+      ))}
     </div>
   );
 }
