@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-// import App from './App';
 import Root from "./routes/root";
 import reportWebVitals from './reportWebVitals';
 import ErrorPage from "./error-page";
-import Contact from "./routes/contact";
+import Foo from "./routes/foo";
+import Bar from "./routes/bar";
 
 // React Router Quick Start Guide: https://reactrouter.com/en/main/start/tutorial
 
@@ -17,13 +17,16 @@ import {
 const router = createBrowserRouter([
   {
     path: "/",
-    // element: <div>Hello world!</div>,
     element: <Root />,
     errorElement: <ErrorPage />,
   },
   {
-    path: "contacts/:contactId",
-    element: <Contact />,
+    path: "foo",
+    element: <Foo />,
+  },
+  {
+    path: "bar",
+    element: <Bar />,
   },
 ]);
 
