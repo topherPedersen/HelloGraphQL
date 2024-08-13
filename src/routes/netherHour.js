@@ -21,7 +21,10 @@ export default function NetherHour() {
           }
           }`,
       })
-      .then((result) => alert(JSON.stringify(result, null, 2)));
+      .then((result) => { 
+        alert(JSON.stringify(result, null, 2));
+        console.log(JSON.stringify(result, null, 2));
+      });
   }, []);
 
   return (
