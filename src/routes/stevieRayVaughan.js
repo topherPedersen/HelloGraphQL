@@ -6,6 +6,7 @@ import { gql } from '@apollo/client';
 // I'm feeling lucky Google search URL format: http://www.google.com/search?q=yourQueryHere&btnI
 
 export default function StevieRayVaughan() {
+  const artistName = 'Stevie Ray Vaughan';
   const [albumAndTrackNames, setAlbumAndTrackNames] = useState([]);
 
   function initAlbumsAndTracks() {
@@ -41,7 +42,9 @@ export default function StevieRayVaughan() {
   }, []);
 
   function onClickAlbumOrTrackName(albumOrTrackName) {
-    alert(albumOrTrackName);
+    const searchQuery = encodeURIComponent(`artistName ${albumOrTrackName} YouTube`);
+    const imFeelingLuckyURL = `http://www.google.com/search?q=${searchQuery}&btnI`;
+    window.location.href = imFeelingLuckyURL;
   }
 
   return (
@@ -50,6 +53,7 @@ export default function StevieRayVaughan() {
       {albumAndTrackNames.map((albumOrTrackName, index) => (
         <p 
           key={index}
+          style={{color: 'blue' }}
           onClick={() => onClickAlbumOrTrackName(albumOrTrackName)}
         >
           {albumOrTrackName}
